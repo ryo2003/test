@@ -1,8 +1,11 @@
 from django.db import models
 from django.urls import reverse_lazy
 from django_mysql.models import ListCharField
+from django.contrib.auth.models import User
 
 # Create your models here.
+
+
 
 class Video(models.Model):
     title = models.CharField(
@@ -19,6 +22,11 @@ class Video(models.Model):
                 null = False
             ),
         max_length=225
+        )
+    user = models.ForeignKey(
+        User, 
+        default=1,
+        on_delete=models.CASCADE
         )
     def __str__(self):
         return self.title

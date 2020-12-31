@@ -6,3 +6,5 @@ from . import models
 @admin.register(models.Video)
 class VideoAdmin(admin.ModelAdmin):
     pass
+
+

@@ -16,11 +16,11 @@ class VideoFormView(FormView):
     
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        ctx['videos'] = Video.objects.all
+        ctx['videos'] = Video.objects.filter(user=self.request.user)
         return ctx
     
     def form_valid(self,form):
-        form.save()
+        form.save(self.request)
         return super().form_valid(form)
     
 class WatchVideoView(DetailView):
