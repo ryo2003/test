@@ -32,10 +32,22 @@
           player.playVideo();
       }
       
+      function onSetButtonClick(){
+          duration = player.getCurrentTime();
+          document.form2.duration.value = duration;
+      }
+
      
     </script>
             
     <button type="button" value="Exec" onclick="OnButtonClick();">再生</button>
+    <button type="button" value="Exec" onclick="onSetButtonClick();">Set duration</button>
+    
+    <form name="form2">
+        <input type="text" name="duration" size="40" maxlength="20">
+        <input type="submit" value="Add duration">
+    </form>
+    
 
 {% endblock %}
 

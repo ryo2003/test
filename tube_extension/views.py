@@ -25,3 +25,16 @@ class VideoFormView(FormView):
     
 class WatchVideoView(DetailView):
     model = Video
+    
+def view_article(request,pk):
+    template_name = "templates/tube_extension/video_detail.html"
+    try:
+        video = models.Video.objects.get(pk=pk)
+    except models.Video.DoesNotExist:
+        raise Http404
+    if request.method == "POST":
+        # データベースに投稿されたコメントを保存
+        video.durations.append(int(request.POST["duration"]))
+        video.save()
+    context = {"article": video}
+    return render(request, template_name, context)
