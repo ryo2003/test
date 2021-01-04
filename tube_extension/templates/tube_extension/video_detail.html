@@ -34,7 +34,7 @@
       
       function onSetButtonClick(){
           duration = player.getCurrentTime();
-          document.form2.duration.value = duration;
+          document.form2.durations.value = duration;
       }
 
      
@@ -44,7 +44,8 @@
     <button type="button" value="Exec" onclick="onSetButtonClick();">Set duration</button>
     
     <form name="form2">
-        <input type="text" name="duration" size="40" maxlength="20">
+        {% csrf_token %}
+       {{ form.as_p }}
         <input type="submit" value="Add duration">
     </form>
     
